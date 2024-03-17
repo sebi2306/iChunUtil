@@ -4,7 +4,7 @@ import com.mojang.blaze3d.matrix.MatrixStack;
 import com.mojang.blaze3d.systems.RenderSystem;
 import me.ichun.mods.ichunutil.client.gui.bns.Theme;
 import me.ichun.mods.ichunutil.client.gui.bns.window.Fragment;
-import net.minecraft.client.resources.I18n;
+import net.minecraft.client.resources.language.I18n;
 
 import javax.annotation.Nonnull;
 import javax.annotation.Nullable;
@@ -18,7 +18,7 @@ public class ElementToggle<T extends ElementToggle> extends ElementClickable<T>
     public ElementToggle(@Nonnull Fragment parent, @Nonnull String s, Consumer<T> callback)
     {
         super(parent, callback);
-        text = !s.isEmpty() ? I18n.format(s) : "";
+        text = !s.isEmpty() ? I18n.get(s) : "";
     }
 
     public <T extends ElementToggle<?>> T setToggled(boolean flag)

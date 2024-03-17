@@ -7,7 +7,7 @@ import me.ichun.mods.ichunutil.client.gui.bns.window.Window;
 import me.ichun.mods.ichunutil.client.gui.bns.window.constraint.Constraint;
 import me.ichun.mods.ichunutil.client.gui.bns.window.view.element.Element;
 import net.minecraft.client.Minecraft;
-import net.minecraft.client.resources.I18n;
+import net.minecraft.client.resources.language.I18n;
 
 import javax.annotation.Nonnull;
 import java.util.ArrayList;
@@ -22,7 +22,7 @@ public abstract class View<P extends Window<? extends IWindows>> extends Fragmen
     public View(@Nonnull P parent, @Nonnull String s)
     {
         super(parent);
-        title = I18n.format(s);
+        title = I18n.get(s);
         constraint = Constraint.matchParent(this, parent, parent.borderSize.get());
         if(parent.canShowTitle() && !s.isEmpty())
         {

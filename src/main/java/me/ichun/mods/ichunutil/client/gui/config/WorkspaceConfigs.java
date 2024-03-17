@@ -14,7 +14,7 @@ import me.ichun.mods.ichunutil.common.config.ConfigBase;
 import me.ichun.mods.ichunutil.common.iChunUtil;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.screen.Screen;
-import net.minecraft.client.resources.I18n;
+import net.minecraft.client.resources.language.I18n;
 import net.minecraft.util.text.TranslationTextComponent;
 import net.minecraftforge.fml.config.ModConfig;
 import net.minecraftforge.fml.server.ServerLifecycleHooks;
@@ -56,7 +56,7 @@ public class WorkspaceConfigs extends Workspace
 
             if(config.config.getConfigType().equals(ModConfig.Type.SERVER) && !(Minecraft.getInstance().player != null && ServerLifecycleHooks.getCurrentServer().isSinglePlayer() && ServerLifecycleHooks.getCurrentServer().getPlayerList().getCurrentPlayerCount() <= 1)) //Trying to edit a SERVER config in a non-singerplayer world environment.
             {
-                WindowPopup.popup(this, 0.6D, 140, null, I18n.format("gui.ichunutil.configs.noEditingServerConfig"));
+                WindowPopup.popup(this, 0.6D, 140, null, I18n.get("gui.ichunutil.configs.noEditingServerConfig"));
             }
             else
             {
@@ -172,13 +172,13 @@ public class WorkspaceConfigs extends Workspace
     {
         if(cat.isEmpty())
         {
-            return I18n.format("config.ichunutil.cat.general." + suffix);
+            return I18n.get("config.ichunutil.cat.general." + suffix);
         }
         else if(cat.equals("general") || cat.equals("gameplay") || cat.equals("global") || cat.equals("serverOnly") || cat.equals("clientOnly") || cat.equals("block"))
         {
-            return I18n.format("config.ichunutil.cat."+ cat + "." + suffix);
+            return I18n.get("config.ichunutil.cat."+ cat + "." + suffix);
         }
-        return I18n.format("config." + info.config.getModId() + ".cat."+ cat + "." + suffix);
+        return I18n.get("config." + info.config.getModId() + ".cat."+ cat + "." + suffix);
     }
 
     public static class ConfigInfo
@@ -195,7 +195,7 @@ public class WorkspaceConfigs extends Workspace
                 TreeSet<ValueWrapperLocalised> set = categories.computeIfAbsent(e.getKey(), v -> new TreeSet<>(Ordering.natural()));
                 for(ConfigBase.ValueWrapper<?> valueWrapper : e.getValue())
                 {
-                    set.add(new ValueWrapperLocalised(valueWrapper, I18n.format("config." + config.getModId() + ".prop." + valueWrapper.field.getName() + ".name"), I18n.format("config." + config.getModId() + ".prop." + valueWrapper.field.getName() + ".desc")));
+                    set.add(new ValueWrapperLocalised(valueWrapper, I18n.get("config." + config.getModId() + ".prop." + valueWrapper.field.getName() + ".name"), I18n.get("config." + config.getModId() + ".prop." + valueWrapper.field.getName() + ".desc")));
                 }
             }
         }

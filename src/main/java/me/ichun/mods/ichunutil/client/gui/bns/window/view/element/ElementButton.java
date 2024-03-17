@@ -3,7 +3,7 @@ package me.ichun.mods.ichunutil.client.gui.bns.window.view.element;
 import com.mojang.blaze3d.matrix.MatrixStack;
 import com.mojang.blaze3d.systems.RenderSystem;
 import me.ichun.mods.ichunutil.client.gui.bns.window.Fragment;
-import net.minecraft.client.resources.I18n;
+import net.minecraft.client.resources.language.I18n;
 
 import javax.annotation.Nonnull;
 import javax.annotation.Nullable;
@@ -17,7 +17,7 @@ public class ElementButton<T extends ElementButton> extends ElementClickable<T>
     public ElementButton(@Nonnull Fragment parent, String s, Consumer<T> callback)
     {
         super(parent, callback);
-        text = I18n.format(s);
+        text = I18n.get(s);
     }
 
     public ElementButton<T> disableBackground()
